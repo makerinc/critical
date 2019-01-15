@@ -658,7 +658,7 @@ async function getStylesheet(document, filepath, options = {}) {
   } else if (isRemote(rebase.to || stylepath)) {
     const from = rebase.from || stylepath;
     const to = rebase.to || stylepath;
-    const method = asset => (isRemote(asset.originUrl) ? asset : url.resolve(to, asset.relativePath));
+    const method = asset => (isRemote(asset.originUrl) ? false : url.resolve(to, asset.relativePath));
     file.contents = rebaseAssets(file.contents, from, to, method);
 
     // Use relative path to document (local)
