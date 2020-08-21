@@ -730,7 +730,7 @@ async function getStylesheet(document, filepath, options = {}) {
   if (rebase.from && rebase.to) {
     file.contents = rebaseAssets(file.contents, rebase.from, rebase.to);
   } else if (typeof rebase === 'function') {
-    file.contents = rebaseAssets(file.contents, stylepath, document.virtualPath, rebase);
+    file.contents = rebaseAssets(file.contents, stylepath, document.virtualPath || stylepath, rebase);
     // Next rebase to the stylesheet url
   } else if (isRemote(rebase.to || stylepath)) {
     const from = rebase.from || stylepath;
