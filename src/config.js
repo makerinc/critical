@@ -31,7 +31,7 @@ const schema = Joi.object()
     ignore: [Joi.array(), Joi.object().unknown(true)],
     width: Joi.number().default(DEFAULT.width),
     height: Joi.number().default(DEFAULT.height),
-    minify: Joi.boolean().default(DEFAULT.minify),
+    minify: Joi.alternatives().try(Joi.boolean(), Joi.object().unknown(true)).default(DEFAULT.minify),
     dimensions: Joi.array().items({width: Joi.number(), height: Joi.number()}),
     inline: [Joi.boolean().default(DEFAULT.inline), Joi.object().unknown(true)],
     maxImageFileSize: Joi.number().default(DEFAULT.maxImageFileSize),
